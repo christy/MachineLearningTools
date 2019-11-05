@@ -1,3 +1,5 @@
+import pandas as pd
+print('pandas: {}'.format(pd.__version__))
 import statsmodels.api as sm
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 from joblib import Parallel, delayed
