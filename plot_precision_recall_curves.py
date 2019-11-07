@@ -19,21 +19,20 @@ def plot_precision_recall_vs_threshold(*tuples: Tuple[SetValidation]):
     sets (Typically: train, validation and test)
 
     Keyword Arguments:
-        tuples {Tuple[pyazlo.plots.models.SetValidation]} -- Different
+        tuples {Tuple[SetValidation]} -- Different
             SetValidation instances, defining ground truths and
             predictions for different sets of data.
 
     Raises:
-        exceptions.PyazloPlotBadArgumentException: [description]
         ValueError: [description]
     """
     no_tuples = len(tuples)
 
     if no_tuples < 1:
-        raise exceptions.PyazloPlotBadArgumentException(
+        raise ValueError(
             "You shall not pass with no inputs"
         )
-
+    
     if no_tuples <= 3:
         #fig, axes = plt.subplots(1, no_tuples) 
         fig, axes = plt.subplots(1, no_tuples, figsize=(12,4))
