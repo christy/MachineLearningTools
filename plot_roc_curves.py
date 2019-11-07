@@ -11,7 +11,7 @@ SetValidation = collections.namedtuple(
 
 def plot_precision_recall_vs_threshold(*tuples: SetValidation, posLabel):
     """Plot both precision and recall curves for different data
-    sets (Typically: train, validation and test)
+    sets (Typically: train, validation and test) side-by-side
     """
     no_tuples = len(tuples)
 
@@ -47,7 +47,7 @@ def plot_precision_recall_vs_threshold(*tuples: SetValidation, posLabel):
 
 
 def plot_rocs(*tuples: SetValidation, posLabel):
-    """Plots ROC curves for multiple sets of data.
+    """Plots ROC curves for multiple sets of data in same plot
     """
     no_tuples = len(tuples)
 
@@ -97,4 +97,9 @@ train_set_validation = SetValidation(trainDataAndPredictions[nameYActual], y_tra
 valid_set_validation = SetValidation(validDataAndPredictions[nameYActual], y_test_pred, "Valid")
 oot_set_validation = SetValidation(ootDataAndPredictions[nameYActual], y_oot_pred, "OOT")
 
+# Make the ROC chart
 plot_rocs(train_set_validation, valid_set_validation, oot_set_validation)
+
+# Make the precision/recall charts 
+print("GLM MODEL, Trained on Fraud")  #title if you want one
+plot_precision_recall_vs_threshold(train_set_validation, valid_set_validation, oot_set_validation)
