@@ -86,3 +86,15 @@ def plot_rocs(*tuples: SetValidation, posLabel):
         error_message = "You should not pass more than 3 sets yet."
         logger.error(error_message)
         raise ValueError(error_message)
+
+        
+# EXAMPLE FUNCTION CALL
+nameYActual = 'fraudLong'
+y_train_pred = trainDataAndPredictions['glm_p1'] #train fraud probability
+y_test_pred = validDataAndPredictions['glm_p1']  #valid fraud probability
+y_oot_pred = ootDataAndPredictions['glm_p1']     #oot fraud probability
+train_set_validation = SetValidation(trainDataAndPredictions[nameYActual], y_train_pred, "Train")
+valid_set_validation = SetValidation(validDataAndPredictions[nameYActual], y_test_pred, "Valid")
+oot_set_validation = SetValidation(ootDataAndPredictions[nameYActual], y_oot_pred, "OOT")
+
+plot_rocs(train_set_validation, valid_set_validation, oot_set_validation)
