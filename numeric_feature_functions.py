@@ -2,9 +2,38 @@
 
 import pandas as pd
 print('pandas: {}'.format(pd.__version__))
+# display all columns wide
+pd.set_option('display.max_columns', None)
+#turn off scientific notation
+pd.set_option('display.float_format', lambda x: '%.5f' % x)
+import numpy as np
+print('numpy: {}'.format(np.__version__))
+import matplotlib.pyplot as plt
+%matplotlib inline 
+import seaborn as sns
+print('seaborn: {}'.format(sns.__version__))
+# Load and format colorblind palette
+color_pal = sns.color_palette("colorblind", 6).as_hex()
+colorblind6 = ','.join(color_pal).split(",")
+# Use white grid plot background from seaborn
+sns.set(font_scale=1.5, style="whitegrid")
 from typing import List, Callable, Any
 from joblib import Parallel, delayed
 from tqdm.auto import tqdm
+
+# numeric feature generation
+from numpy.random import seed
+import sklearn
+print('sklearn: {}'.format(sklearn.__version__))
+from sklearn import metrics
+# for yeo-johnson normal transforms
+from sklearn.preprocessing import PowerTransformer
+# for RankGauss transforms
+from sklearn.preprocessing import QuantileTransformer
+# for D'Agostino K^2 normality test
+from scipy.stats import normaltest
+# for Anderson Darling normality test
+from scipy.stats import anderson
 
 # Apply parellel function
 def apply_parallel(
