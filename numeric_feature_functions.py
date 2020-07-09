@@ -416,8 +416,8 @@ dfs_result_agg = numeric_feature_autotransform(g[mylist_numerical]
 
 # append just new numerical features as right-side columns of features
 logger.info(f"shape before new numerical features is {features.shape}")
-newfeatures = [x for x in dfs_result_agg.columns if x not in features_train.columns]
-features = pd.concat([features_train, dfs_result_agg[newfeatures]], axis=1)
+newfeatures = [x for x in dfs_result_agg.columns if x not in features.columns]
+features = pd.concat([features, dfs_result_agg[newfeatures]], axis=1)
 logger.info(f"shape after new numerical features is {features.shape}")
 
 # double-check you did the right thing
