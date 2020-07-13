@@ -81,9 +81,9 @@ def features_agg_numeric(
         g[f"{numeric_col.lower()}_max"]= g[numeric_col].max()
         g[f"{numeric_col.lower()}_median"]= np.median(g[numeric_col])
         # logs
-        g[f"{numeric_col.lower()}_logmean"]= np.log(g[numeric_col].mean())
-        g[f"{numeric_col.lower()}_logmax"]= np.log(g[numeric_col].max())
-        g[f"{numeric_col.lower()}_logmedian"]= np.log(g[numeric_col].median())
+        g[f"{numeric_col.lower()}_logmean"]= np.log(g[numeric_col]).mean()
+        g[f"{numeric_col.lower()}_logmax"]= np.log(g[numeric_col]).max()
+        g[f"{numeric_col.lower()}_logmedian"]= np.median(np.log(g[numeric_col]))
         
     return g
 
